@@ -25,7 +25,7 @@ int main()
         printf("Número: ");
         scanf("%d", &aluno.numero);
         printf("Nome: ");
-        scanf("%s", aluno.nome);FILE *f=fopen("alunos.txt", "a");
+        scanf("%s", aluno.nome);
         printf("País: ");
         scanf("%s", aluno.pais);
 
