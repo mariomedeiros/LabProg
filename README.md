@@ -7,6 +7,10 @@ Ficheiros para a Atividade Formativa 2:
 
 » basededados.h
 
+» interface.c
+
+» interface.h
+
 » main.c
 
 » alunos.txt
