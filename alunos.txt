@@ -1,0 +1,4 @@
+100000;Joana Barros;Brasil;
+111111;Ana Ramos;Espanha;
+999999;Paulo Santos;Portugal;
+1;1;1;
