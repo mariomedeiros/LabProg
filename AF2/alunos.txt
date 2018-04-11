@@ -1,8 +1,0 @@
-100000;Joana Barros;Brasil;
-111111;Ana Ramos;Espanha;
-999999;Paulo Santos;Portugal;
-1;1;1;
-4;4;4;
-5;5;5;
-1600054;César;Portugal;
-123;Isabel;Angola;
