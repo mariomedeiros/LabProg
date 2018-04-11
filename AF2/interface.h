@@ -6,5 +6,6 @@ void interfaceAlunos();
 void interfaceUC();
 void interfaceInscricoes();
 void interfaceInserirNovoAluno();
+void interfaceInserirNovaUC();
 
 #endif

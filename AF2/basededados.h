@@ -39,8 +39,11 @@ Alunos *inserirAluno(Alunos *listaAlunos, Alunos *aluno);
 
 // Declaração das funções da unidade curricular
 UnidadesCurriculares *inserirUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc);
-UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC);
+UnidadesCurriculares *criarListaUC(UnidadesCurriculares *listaUC, char *linha);
+UnidadesCurriculares *lerFicheiroUC(UnidadesCurriculares *listaUC, char *nomeFicheiro);
+UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc);
 void *libertarListaUC(UnidadesCurriculares *listaUC);
+
 
 // Declaração das funções da inscrição
 Inscricoes *inserirInscricao(Inscricoes *listaInscricoes, Inscricoes *inscricao);

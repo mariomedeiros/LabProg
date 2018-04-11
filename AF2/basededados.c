@@ -19,7 +19,7 @@ Alunos *inserirAluno(Alunos *listaAlunos, Alunos *aluno)
     return listaAlunos;
 }
 
-// Inserir alunos do ficheiro na lista
+// Criar lista de alunos através do ficheiro
 Alunos *criarListaAlunos(Alunos *listaAlunos, char *linha)
 {
     char *aux;
@@ -105,15 +105,63 @@ UnidadesCurriculares *inserirUC(UnidadesCurriculares *listaUC, UnidadesCurricula
     return listaUC;
 }
 
-// Mostrar Unidades Curriculares existentes na BD
-UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC)
+// Criar lista de UNidades Curriculares através do ficheiro
+UnidadesCurriculares *criarListaUC(UnidadesCurriculares *listaUC, char *linha)
 {
-    printf("\nUnidades Curriculares inseridas:\n");
-    while (listaUC!=NULL)
+    char *aux;
+    UnidadesCurriculares *novaUC = (UnidadesCurriculares *)malloc(sizeof(UnidadesCurriculares));
+
+    aux = strtok (linha, ";");
+    novaUC->numero=atoi(aux);
+    aux=strtok(NULL, ";");
+    strcpy(novaUC->nome, aux);
+    aux=strtok(NULL, ";");
+    novaUC->ano=atoi(aux);
+    aux=strtok(NULL, ";");
+    novaUC->semestre=atoi(aux);
+    aux=strtok(NULL, ";");
+
+    listaUC=mostrarUC(listaUC, novaUC);
+
+    return listaUC;
+}
+
+// Ler lista de Unidades Curriculares existentes na BD através do ficheiro uc.txt
+UnidadesCurriculares *lerFicheiroUC(UnidadesCurriculares *listaUC, char *nomeFicheiro)
+{   
+    char linha[MAX];
+    
+    FILE *fUC=fopen(nomeFicheiro, "r");
+
+    if (fUC!=NULL)
     {
-        printf("Número: %d; Nome: %s; Ano: %d; Semestre: %d;\n", listaUC->numero, listaUC->nome, listaUC->ano, listaUC->semestre);
-        listaUC=listaUC->seguinte;
+        printf("\n-- Unidades Curriculares inseridas no ficheiro '%s' --\n", nomeFicheiro);
+        while (!feof(fUC))
+        {
+            fgets(linha, MAX, fUC);
+            if (strlen(linha)>2)
+                criarListaUC(listaUC, linha);    
+        }
     }
+    else
+        printf("Erro ao abrir o ficheiro");
+    return listaUC;
+    fclose(fUC);
+    libertarListaUC(listaUC);
+}
+
+// Mostrar Unidades Curriculares existentes na BD
+UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc)
+{
+    if (uc!=NULL)
+    {
+        printf("\n");
+        printf("» Número: %d\n", uc->numero);
+        printf("» Nome: %s\n", uc->nome);
+        printf("» Ano: %d\n", uc->ano);
+        printf("» Semestre: %d\n", uc->semestre);
+    }
+    return listaUC;
 }
 
 // Libertar lista de Unidades Curriculares
