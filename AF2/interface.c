@@ -5,12 +5,20 @@
 #include "interface.h"
 #include "basededados.h"
 
+// ----- # declaração das variáveis globais -----
+
 Alunos *listaAlunos;
 Alunos aluno;
 UnidadesCurriculares *listaUC;
 UnidadesCurriculares uc;
+Inscricoes *listaInscricoes;
+Inscricoes inscricao;
 
-// Interface para o menu
+// ----- # -----
+
+// ----- # funções para interfaces -----
+
+// ----- funções interface principal -----
 void interfacePrincipal()
 {
     int opSubMenu;
@@ -32,7 +40,7 @@ void interfacePrincipal()
                 interfaceUC();
                 break;
             case 3:
-                //interfaceInscricoes();
+                interfaceInscricoes();
                 break;
             case 0:
                 break;
@@ -42,6 +50,7 @@ void interfacePrincipal()
     } while (opSubMenu>0);
 }
 
+// ----- funções interface principal dos alunos -----
 void interfaceAlunos()
 {
     int op;
@@ -52,7 +61,8 @@ void interfaceAlunos()
         printf("2 > Inserir novo aluno\n");
         printf("3 > Alterar aluno\n");
         printf("4 > Apagar aluno\n");
-        printf("0 > Voltar ao menu anterior\n");
+        printf("9 > Voltar ao menu anterior\n");
+        printf("0 > Sair\n");
         printf("\nOpção: ");
         scanf("%d", &op);
         switch (op)
@@ -67,8 +77,10 @@ void interfaceAlunos()
                 break;
             case 4:
                 break;
-            case 0:
+            case 9:
                 interfacePrincipal();
+                break;
+            case 0:
                 break;
             default:
                 printf("\nOpção Inválida. Escolha outra opção\n");
@@ -76,6 +88,7 @@ void interfaceAlunos()
     } while (op>0);
 }
 
+// ----- funções interface inserir novos alunos -----
 void interfaceInserirNovoAluno()
 {
     printf("\nNúmero de estudante: ");
@@ -92,6 +105,7 @@ void interfaceInserirNovoAluno()
     printf("\nNovo aluno inserido.\n");
 }
 
+// ----- funções interface principal das unidades curriculares -----
 void interfaceUC()
 {
     int op;
@@ -102,7 +116,8 @@ void interfaceUC()
         printf("2 > Inserir nova Unidade Curricular\n");
         printf("3 > Alterar Unidade Curricular\n");
         printf("4 > Apagar UNidade Curricular\n");
-        printf("0 > Voltar ao menu anterior\n");
+        printf("9 > Voltar ao menu anterior\n");
+        printf("0 > Sair\n");
         printf("\nOpção: ");
         scanf("%d", &op);
         switch (op)
@@ -117,8 +132,10 @@ void interfaceUC()
                 break;
             case 4:
                 break;
-            case 0:
+            case 9:
                 interfacePrincipal();
+                break;
+            case 0:
                 break;
             default:
                 printf("\nOpção Inválida. Escolha outra opção\n");
@@ -126,13 +143,14 @@ void interfaceUC()
     } while (op>0);
 }
 
+// ----- funções interface inserir novas unidades curriculares -----
 void interfaceInserirNovaUC()
 {
     printf("\nNúmero da Unidade Curricular: ");
     scanf("%d", &uc.numero);
     printf("Nome da Unidade Curricular: ");
     scanf("%s", uc.nome);
-    printf("Ano letivo: ");
+    printf("Ano: ");
     scanf("%d", &uc.ano);
     printf("Semestre: ");
     scanf("%d", &uc.semestre);
@@ -143,3 +161,60 @@ void interfaceInserirNovaUC()
     fclose(fUC);
     printf("\nNova Unidade Curricular inserida.\n");
 }
+
+// ----- funções interface principal das inscrições -----
+void interfaceInscricoes()
+{
+    int op;
+    do
+    {
+        printf("\n»» Gestão de inscrições\n\n");
+        printf("1 > Consultar lista de inscrições\n");
+        printf("2 > Inserir nova inscrição\n");
+        printf("3 > Alterar inscrição\n");
+        printf("4 > Apagar inscrição\n");
+        printf("9 > Voltar ao menu anterior\n");
+        printf("0 > Sair\n");
+        printf("\nOpção: ");
+        scanf("%d", &op);
+        switch (op)
+        {
+            case 1:
+                listaInscricoes = lerFicheiroInscricao(listaInscricoes, "inscricoes.txt");
+                break;
+            case 2:
+                interfaceInserirNovaInscricao();
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 9:
+                interfacePrincipal();
+                break;
+            case 0:
+                break;
+            default:
+                printf("\nOpção Inválida. Escolha outra opção\n");
+        }
+    } while (op>0);
+}
+
+// ----- funções interface inserir novas inscrições -----
+void interfaceInserirNovaInscricao()
+{
+    printf("\nNúmero de aluno: ");
+    scanf("%d", &inscricao.numeroAluno);
+    printf("Nome da Unidade Curricular: ");
+    scanf("%d", &inscricao.numeroUC);
+    printf("Ano: ");
+    scanf("%d", &inscricao.ano);
+
+    FILE *fInscricoes=fopen("inscricoes.txt", "a");
+    listaInscricoes = inserirInscricao(listaInscricoes, &inscricao);
+    fprintf(fInscricoes, "%d;%d;%d;\n", inscricao.numeroAluno, inscricao.numeroAluno, inscricao.ano);
+    fclose(fInscricoes);
+    printf("\nNova inscrição inserida.\n");
+}
+
+// ----- # -----

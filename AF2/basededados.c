@@ -4,7 +4,9 @@
 #include <ctype.h>
 #include "basededados.h"
 
-// Inserir um novo aluno na BD
+// ----- # funções para alunos -----
+
+// ----- função para inserir um novo aluno na base de dados -----
 Alunos *inserirAluno(Alunos *listaAlunos, Alunos *aluno)
 {
     Alunos *novoAluno=(Alunos *)malloc(sizeof(Alunos));
@@ -19,7 +21,7 @@ Alunos *inserirAluno(Alunos *listaAlunos, Alunos *aluno)
     return listaAlunos;
 }
 
-// Criar lista de alunos através do ficheiro
+// ----- função para criar lista com alunos existentes no ficheiro -----
 Alunos *criarListaAlunos(Alunos *listaAlunos, char *linha)
 {
     char *aux;
@@ -32,16 +34,17 @@ Alunos *criarListaAlunos(Alunos *listaAlunos, char *linha)
     aux=strtok(NULL, ";");
     strcpy(novoAluno->pais, aux);
     aux=strtok(NULL, ";");
-    
+
     listaAlunos=mostrarAlunos(listaAlunos, novoAluno);
 
     return listaAlunos;
 }
 
-// Ler lista de alunos existentes na BD através do ficheiro alunos.txt
+// ----- função para ler lista de alunos existentes no ficheiro -----
 Alunos *lerFicheiroAluno(Alunos *listaAlunos, char *nomeFicheiro)
 {   
     char linha[MAX];
+    int count=0;
     
     FILE *fAlunos=fopen(nomeFicheiro, "r");
 
@@ -62,20 +65,20 @@ Alunos *lerFicheiroAluno(Alunos *listaAlunos, char *nomeFicheiro)
     libertarListaAlunos(listaAlunos);
 }
 
-// Mostrar alunos existentes na BD
+// ----- função para mostrar lista com alunos existentes no ficheiro -----
 Alunos *mostrarAlunos(Alunos *listaAlunos, Alunos *aluno)
 {
+
     if (aluno!=NULL)
     {
-        printf("\n");
-        printf("» Número: %d\n", aluno->numero);
+        printf("\n» Número: %d\n", aluno->numero);
         printf("» Nome: %s\n", aluno->nome);
         printf("» País: %s\n", aluno->pais);
     }
     return listaAlunos;
 }
 
-// Libertar lista de alunos
+// ----- função para libertar memória criada para a lista de alunos -----
 void *libertarListaAlunos(Alunos *listaAlunos)
 {
     Alunos *aux;
@@ -89,7 +92,11 @@ void *libertarListaAlunos(Alunos *listaAlunos)
     return NULL;
 }
 
-// Inserir uma nova Unidade Curricular na BD
+// ----- # -----
+
+// ----- # funções para unidades curriculares -----
+
+// ----- função para inserir uma nova unidade curricular na base de dados -----
 UnidadesCurriculares *inserirUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc)
 {
     UnidadesCurriculares *novaUC=(UnidadesCurriculares *)malloc(sizeof(UnidadesCurriculares));
@@ -105,7 +112,7 @@ UnidadesCurriculares *inserirUC(UnidadesCurriculares *listaUC, UnidadesCurricula
     return listaUC;
 }
 
-// Criar lista de UNidades Curriculares através do ficheiro
+// ----- função para criar lista com unidades curriculares existentes no ficheiro -----
 UnidadesCurriculares *criarListaUC(UnidadesCurriculares *listaUC, char *linha)
 {
     char *aux;
@@ -126,7 +133,7 @@ UnidadesCurriculares *criarListaUC(UnidadesCurriculares *listaUC, char *linha)
     return listaUC;
 }
 
-// Ler lista de Unidades Curriculares existentes na BD através do ficheiro uc.txt
+// ----- função para ler lista de unidades curriculares existentes no ficheiro -----
 UnidadesCurriculares *lerFicheiroUC(UnidadesCurriculares *listaUC, char *nomeFicheiro)
 {   
     char linha[MAX];
@@ -150,7 +157,7 @@ UnidadesCurriculares *lerFicheiroUC(UnidadesCurriculares *listaUC, char *nomeFic
     libertarListaUC(listaUC);
 }
 
-// Mostrar Unidades Curriculares existentes na BD
+// ----- função para mostrar lista com unidades curriculares existentes no ficheiro -----
 UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc)
 {
     if (uc!=NULL)
@@ -164,7 +171,7 @@ UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurricula
     return listaUC;
 }
 
-// Libertar lista de Unidades Curriculares
+// ----- função para libertar memória criada para a lista de unidades curriculares -----
 void *libertarListaUC(UnidadesCurriculares *listaUC)
 {
     UnidadesCurriculares *aux;
@@ -178,7 +185,11 @@ void *libertarListaUC(UnidadesCurriculares *listaUC)
     return NULL;
 }
 
-// Inserir uma nova Inscrição na BD
+// ----- # -----
+
+// ----- # funções para inscrições -----
+
+// ----- função para inserir uma nova inscrição na base de dados -----
 Inscricoes *inserirInscricao(Inscricoes *listaInscricoes, Inscricoes *inscricao)
 {
     Inscricoes *novaInscricao=(Inscricoes *)malloc(sizeof(Inscricoes));
@@ -193,18 +204,63 @@ Inscricoes *inserirInscricao(Inscricoes *listaInscricoes, Inscricoes *inscricao)
     return listaInscricoes;
 }
 
-// Mostrar Inscrições existentes na BD
-Inscricoes *mostrarInscricao(Inscricoes *listaInscricoes)
+// ----- função para criar lista com inscrições existentes no ficheiro -----
+Inscricoes *criarListaInscricao(Inscricoes *listaInscricoes, char *linha)
 {
-    printf("\nInscrições inseridas:\n");
-    while (listaInscricoes!=NULL)
-    {
-        printf("Número Aluno: %d; Número UC: %d; Ano: %d;\n", listaInscricoes->numeroAluno, listaInscricoes->numeroUC, listaInscricoes->ano);
-        listaInscricoes=listaInscricoes->seguinte;
-    }
+    char *aux;
+    Inscricoes *novaInscricao = (Inscricoes *)malloc(sizeof(Inscricoes));
+
+    aux = strtok (linha, ";");
+    novaInscricao->numeroAluno=atoi(aux);
+    aux=strtok(NULL, ";");
+    novaInscricao->numeroUC=atoi(aux);
+    aux=strtok(NULL, ";");
+    novaInscricao->ano=atoi(aux);
+    aux=strtok(NULL, ";");
+
+    listaInscricoes=mostrarInscricoes(listaInscricoes, novaInscricao);
+
+    return listaInscricoes;
 }
 
-// Libertar lista de Inscrições
+// ----- função para ler lista de inscrições existentes no ficheiro -----
+Inscricoes *lerFicheiroInscricao(Inscricoes *listaInscricoes, char *nomeFicheiro)
+{   
+    char linha[MAX];
+    
+    FILE *fInscricoes=fopen(nomeFicheiro, "r");
+
+    if (fInscricoes!=NULL)
+    {
+        printf("\n-- Unidades Curriculares inseridas no ficheiro '%s' --\n", nomeFicheiro);
+        while (!feof(fInscricoes))
+        {
+            fgets(linha, MAX, fInscricoes);
+            if (strlen(linha)>2)
+                criarListaInscricao(listaInscricoes, linha);    
+        }
+    }
+    else
+        printf("Erro ao abrir o ficheiro");
+    return listaInscricoes;
+    fclose(fInscricoes);
+    libertarListaInscricao(listaInscricoes);
+}
+
+// ----- função para mostrar lista com inscrições existentes no ficheiro -----
+Inscricoes *mostrarInscricoes(Inscricoes *listaInscricoes, Inscricoes *inscricao)
+{
+    if (inscricao!=NULL)
+    {
+        printf("\n");
+        printf("» Número aluno: %d\n", inscricao->numeroAluno);
+        printf("» Número unidade curricular: %d\n", inscricao->numeroUC);
+        printf("» Ano: %d\n", inscricao->ano);
+    }
+    return listaInscricoes;
+}
+
+// ----- função para libertar memória criada para a lista de inscrições -----
 void *libertarListaInscricao(Inscricoes *listaInscricoes)
 {
     Inscricoes *aux;
@@ -217,3 +273,5 @@ void *libertarListaInscricao(Inscricoes *listaInscricoes)
     }
     return NULL;
 }
+
+// ----- # -----

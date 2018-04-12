@@ -1,8 +1,9 @@
 #ifndef BASEDEDADOS_H
 #define BASEDEDADOS_H
-#define MAX 100
+#define MAX 100 // tamanho máximo para string
 
-// Struct ALUNOS
+// ----- # estruturas -----
+
 typedef struct sAlunos
 {
     int numero;
@@ -11,7 +12,6 @@ typedef struct sAlunos
     struct sAlunos *seguinte;
 } Alunos;
 
-// Struct UNIDADES CURRICULARES
 typedef struct sUnidadesCurriculares
 {
     int numero;
@@ -21,7 +21,6 @@ typedef struct sUnidadesCurriculares
     struct sUnidadesCurriculares *seguinte;
 } UnidadesCurriculares;
 
-// Struct INSCRIÇÕES
 typedef struct sInscricoes
 {
     int numeroAluno;
@@ -30,24 +29,31 @@ typedef struct sInscricoes
     struct sInscricoes *seguinte;
 } Inscricoes;
 
-// Declaração das funções do aluno
+// ----- # -----
+
+// ----- # declaração das funções -----
+
+// funções para alunos
 Alunos *criarListaAlunos(Alunos *listaAlunos, char *linha);
 Alunos *mostrarAlunos(Alunos *listaAlunos, Alunos *aluno);
-void *libertarListaAlunos(Alunos *listaAlunos);
 Alunos *lerFicheiroAluno(Alunos *listaAlunos, char *nomeFicheiro);
 Alunos *inserirAluno(Alunos *listaAlunos, Alunos *aluno);
+void *libertarListaAlunos(Alunos *listaAlunos);
 
-// Declaração das funções da unidade curricular
+// funções para unidades curriculares
 UnidadesCurriculares *inserirUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc);
 UnidadesCurriculares *criarListaUC(UnidadesCurriculares *listaUC, char *linha);
 UnidadesCurriculares *lerFicheiroUC(UnidadesCurriculares *listaUC, char *nomeFicheiro);
 UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurriculares *uc);
 void *libertarListaUC(UnidadesCurriculares *listaUC);
 
-
-// Declaração das funções da inscrição
+// funções para inscrições
 Inscricoes *inserirInscricao(Inscricoes *listaInscricoes, Inscricoes *inscricao);
-Inscricoes *mostrarInscricao(Inscricoes *listaInscricoes);
+Inscricoes *criarListaInscricao(Inscricoes *listaInscricoes, char *linha);
+Inscricoes *lerFicheiroInscricao(Inscricoes *listaInscricoes, char *nomeFicheiro);
+Inscricoes *mostrarInscricoes(Inscricoes *listaInscricoes, Inscricoes *inscricao);
 void *libertarListaInscricao(Inscricoes *listaInscricoes);
+
+// ----- # -----
 
 #endif
