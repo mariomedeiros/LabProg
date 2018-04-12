@@ -15,4 +15,8 @@ Ficheiros para a Atividade Formativa 2:
 
 » alunos.txt
 
+» interface.txt
+
+» inscricoes.txt
+
 (Código ainda em desenvolvimento)
