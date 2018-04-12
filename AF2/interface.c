@@ -24,7 +24,9 @@ void interfacePrincipal()
     int opSubMenu;
     do
     {
-        printf("\n»» Gestão de alunos, unidades curriculares e inscrições\n\n");
+        printf("+------------------------------------------------------------------------------+");
+        printf("\n| Gestão de alunos, unidades curriculares e inscrições                         |\n");
+        printf("+------------------------------------------------------------------------------+\n");
         printf("1 > Alunos\n");
         printf("2 > Unidades Curriculares\n");
         printf("3 > Inscrições\n");
@@ -56,7 +58,9 @@ void interfaceAlunos()
     int op;
     do
     {
-        printf("\n»» Gestão de alunos\n\n");
+        printf("\n\n+------------------------------------------------------------------------------+");
+        printf("\n| Gestão de alunos                                                             |\n");
+        printf("+------------------------------------------------------------------------------+\n");
         printf("1 > Consultar lista de alunos\n");
         printf("2 > Inserir novo aluno\n");
         printf("3 > Alterar aluno\n");
@@ -91,11 +95,11 @@ void interfaceAlunos()
 // ----- funções interface inserir novos alunos -----
 void interfaceInserirNovoAluno()
 {
-    printf("\nNúmero de estudante: ");
+    printf("\nNúmero de estudante:     ");
     scanf("%d", &aluno.numero);
-    printf("Nome (primeiro e último): ");
+    printf("Nome (primeiro e último):  ");
     scanf("%s", aluno.nome);
-    printf("País de residência: ");
+    printf("País de residência:        ");
     scanf("%s", aluno.pais);
 
     FILE *fAlunos=fopen("alunos.txt", "a");
@@ -111,7 +115,9 @@ void interfaceUC()
     int op;
     do
     {
-        printf("\n»» Gestão de Unidades Curriculares\n\n");
+        printf("\n\n+------------------------------------------------------------------------------+");
+        printf("\n| Gestão de Unidades Curriculares                                              |\n");
+        printf("+------------------------------------------------------------------------------+\n");
         printf("1 > Consultar lista de Unidades Curriculares\n");
         printf("2 > Inserir nova Unidade Curricular\n");
         printf("3 > Alterar Unidade Curricular\n");
@@ -146,13 +152,13 @@ void interfaceUC()
 // ----- funções interface inserir novas unidades curriculares -----
 void interfaceInserirNovaUC()
 {
-    printf("\nNúmero da Unidade Curricular: ");
+    printf("\nNúmero da UC:  ");
     scanf("%d", &uc.numero);
-    printf("Nome da Unidade Curricular: ");
+    printf("Nome da UC:      ");
     scanf("%s", uc.nome);
-    printf("Ano: ");
+    printf("Ano:             ");
     scanf("%d", &uc.ano);
-    printf("Semestre: ");
+    printf("Semestre:        ");
     scanf("%d", &uc.semestre);
 
     FILE *fUC=fopen("uc.txt", "a");
@@ -168,7 +174,9 @@ void interfaceInscricoes()
     int op;
     do
     {
-        printf("\n»» Gestão de inscrições\n\n");
+        printf("\n\n+------------------------------------------------------------------------------+");
+        printf("\n| Gestão de inscrições                                                         |\n");
+        printf("+------------------------------------------------------------------------------+\n");
         printf("1 > Consultar lista de inscrições\n");
         printf("2 > Inserir nova inscrição\n");
         printf("3 > Alterar inscrição\n");
@@ -203,11 +211,11 @@ void interfaceInscricoes()
 // ----- funções interface inserir novas inscrições -----
 void interfaceInserirNovaInscricao()
 {
-    printf("\nNúmero de aluno: ");
+    printf("\nNúmero de aluno:  ");
     scanf("%d", &inscricao.numeroAluno);
-    printf("Nome da Unidade Curricular: ");
+    printf("Nome da Uc:         ");
     scanf("%d", &inscricao.numeroUC);
-    printf("Ano: ");
+    printf("Ano:                ");
     scanf("%d", &inscricao.ano);
 
     FILE *fInscricoes=fopen("inscricoes.txt", "a");

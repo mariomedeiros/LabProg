@@ -71,9 +71,9 @@ Alunos *mostrarAlunos(Alunos *listaAlunos, Alunos *aluno)
 
     if (aluno!=NULL)
     {
-        printf("\n» Número: %d\n", aluno->numero);
-        printf("» Nome: %s\n", aluno->nome);
-        printf("» País: %s\n", aluno->pais);
+        printf("\n» Número  :  %d\n", aluno->numero);
+        printf("» Nome    :  %s\n", aluno->nome);
+        printf("» País    :  %s\n", aluno->pais);
     }
     return listaAlunos;
 }
@@ -163,10 +163,10 @@ UnidadesCurriculares *mostrarUC(UnidadesCurriculares *listaUC, UnidadesCurricula
     if (uc!=NULL)
     {
         printf("\n");
-        printf("» Número: %d\n", uc->numero);
-        printf("» Nome: %s\n", uc->nome);
-        printf("» Ano: %d\n", uc->ano);
-        printf("» Semestre: %d\n", uc->semestre);
+        printf("» Número    :  %d\n", uc->numero);
+        printf("» Nome      :  %s\n", uc->nome);
+        printf("» Ano       :  %d\n", uc->ano);
+        printf("» Semestre  :  %d\n", uc->semestre);
     }
     return listaUC;
 }
@@ -253,9 +253,9 @@ Inscricoes *mostrarInscricoes(Inscricoes *listaInscricoes, Inscricoes *inscricao
     if (inscricao!=NULL)
     {
         printf("\n");
-        printf("» Número aluno: %d\n", inscricao->numeroAluno);
-        printf("» Número unidade curricular: %d\n", inscricao->numeroUC);
-        printf("» Ano: %d\n", inscricao->ano);
+        printf("» Número aluno  :  %d\n", inscricao->numeroAluno);
+        printf("» Número UC     :  %d\n", inscricao->numeroUC);
+        printf("» Ano           :  %d\n", inscricao->ano);
     }
     return listaInscricoes;
 }
